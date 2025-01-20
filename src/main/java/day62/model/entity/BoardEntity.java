@@ -8,12 +8,12 @@ import lombok.*;
 // 2. 해당 엔티티와 매핑된 테이블의 이름을 정의한다.
 @Table(name = "board")
 
-
+// 롬복 어노테이션
 @Getter     // private 멤버변수를 접근 get 메소드를 생성한다.
 @Setter     // private 멤버변수를 접근 set 메소드를 생성한다.
 @ToString   // toString 메소드 : 객체 출력시 멤머변수의 값 반환함수.
 @Builder    // 객체 생성시 생성자가 아닌 유연하게 객체를 만들기 위한 (빌더)패턴
-@NoArgsConstructor  // 빈생성자 
+@NoArgsConstructor  // 빈생성자
 @AllArgsConstructor // 모든 매개변수 생성자
 public class BoardEntity {
 

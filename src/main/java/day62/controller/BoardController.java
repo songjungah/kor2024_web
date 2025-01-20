@@ -15,7 +15,7 @@ public class BoardController {
     // 싱글톤X : 스프링은 자동으로 빈(인스턴스)를 생성하고 관리를 해준다. 개발자가 인스턴스 관리를 Spring 에게 위임하다. IOC > 제어의 역전
     @Autowired private BoardService boardService;
     // 컨트롤러는 무조건 서비스에게 요청을 하고 응답을 받는다.
-        // 규칙 : 컨트롤러에서 리포지토리/엔티티 객체를 사용하면 안된다.
+    // 규칙 : 컨트롤러에서 리포지토리/엔티티 객체를 사용하면 안된다.
 
     // 프레임워크가 관례적으로 CRUD 구현할 때 사용되는 어노테이션
     // C : @PostMapping, R : @GetMapping, U : @PutMappint, D : DeleteMapping : ( "HTTP 매핑 주소 정의" )
@@ -24,10 +24,11 @@ public class BoardController {
 
     // C : 게시물 쓰기
     @PostMapping("/write")  // localhost:8080/write
+    // body : {"btitle" : "제목1" ,"bcontent" : "내용1" ,"bwriter" : "작성자1" ,"bpwd" : "1234" }
     public boolean write(@RequestBody BoardEntity boardEntity) {
         return boardService.write(boardEntity);
     }
-    
+
     // R : 게시물 전체 조회
     @GetMapping("/printall")    // localhost:8080/printall
     public List<BoardEntity> printAll() {
@@ -39,9 +40,8 @@ public class BoardController {
     public BoardEntity print(@RequestParam int bno) {
         return boardService.print(bno);
     }
-    
+
     // U : 게시물 수정
-    @Transactional  // 수정처리 트랜잭션 어노테이션 필수
     @PutMapping("/update")  // localhost:8080/update
     public boolean update(@RequestBody BoardEntity boardEntity) {
         return boardService.update(boardEntity);
